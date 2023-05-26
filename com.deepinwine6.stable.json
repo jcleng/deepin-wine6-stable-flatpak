@@ -1,0 +1,85 @@
+{
+    "app-id": "com.deepinwine6.stable",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "22.08",
+    "sdk": "org.freedesktop.Sdk",
+    "add-extensions": {
+        "org.freedesktop.Platform.Compat.i386": {
+            "directory": "lib/i386-linux-gnu",
+            "version": "22.08"
+        },
+        "org.freedesktop.Sdk.Extension.toolchain-i386": {
+            "directory": "lib/i386-linux-toolchain",
+            "version": "22.08"
+        }
+    },
+    "command": "/app/bin/run.sh",
+    "finish-args": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--device=dri",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--allow=multiarch",
+        "--share=ipc",
+        "--socket=x11",
+        "--allow=devel",
+        "--system-talk-name=org.freedesktop.UDisks2",
+        "--system-talk-name=org.freedesktop.NetworkManager",
+        "--filesystem=xdg-desktop",
+        "--filesystem=xdg-documents",
+        "--filesystem=xdg-pictures",
+        "--filesystem=xdg-music",
+        "--filesystem=xdg-videos",
+        "--filesystem=xdg-download"
+    ],
+    "modules": [
+        {
+            "name": "libudis86",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x udis86_1.72-4_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/* /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/non-free/u/udis86/udis86_1.72-4_i386.deb",
+                    "sha256": "ec874ecdf12f95d634c038a4dd2915951aae09753f4baba50b2074d154e04374"
+                }
+            ]
+        },
+        {
+            "name": "install",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm777 run.sh /app/bin/run.sh",
+                "install -Dm644 -t ${FLATPAK_DEST}/etc ld.so.conf",
+                "ar -p deepin-wine6-stable_6.0.0.42-1_amd64.deb data.tar.xz > data.tar.xz",
+                "tar xvf data.tar.xz",
+                "cp -r opt/deepin-wine6-stable /app/",
+                "mkdir -p /app/lib/i386-linux-gnu",
+                "mkdir -p /app/lib/i386-linux-toolchain",
+                "chmod 777 /app/lib/i386-linux-gnu",
+                "chmod 777 /app/lib/i386-linux-toolchain"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": "./",
+                    "skip": ".flatpak-builder"
+                },
+                {
+                    "type": "file",
+                    "url": "https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_6.0.0.42-1_amd64.deb",
+                    "sha256": "8e4055cc56c70ad1d4dedff515714b625a6264c11e727e99f05bf4b936a77939"
+                }
+            ]
+        }
+    ]
+}
