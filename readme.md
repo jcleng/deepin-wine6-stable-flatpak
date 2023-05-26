@@ -19,3 +19,9 @@ export WINEPREFIX=$XDG_DATA_HOME/deepinwine6
 export WINEARCH=win32
 /app/deepin-wine6-stable/bin/winecfg
 ```
+
+- 其他
+
+```shell
+# 依赖包含samba,是兼容部分程序使用了 ntlm_auth
+```

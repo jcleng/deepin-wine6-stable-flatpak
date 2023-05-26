@@ -54,6 +54,116 @@
             ]
         },
         {
+            "name": "libldap",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libldap-2.4-2_2.4.47%2Bdfsg.4-1%2Beagle_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/o/openldap/libldap-2.4-2_2.4.47%2Bdfsg.4-1%2Beagle_i386.deb",
+                    "sha256": "746848a01dfb988a9afd256e2a5e7b7309c3e65f964e4783ff37cffd98bfc68e"
+                }
+            ]
+        },
+        {
+            "name": "libsasl2",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libsasl2-2_2.1.27.1-1%2Bdde_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/c/cyrus-sasl2/libsasl2-2_2.1.27.1-1%2Bdde_i386.deb",
+                    "sha256": "8f1b65db19239c072689a9775da2699cada23e99738c5b01d13e293cf899bdbd"
+                }
+            ]
+        },
+        {
+            "name": "perl-modules",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo 'this is a workaround for a flatpak+perl limitation'",
+                "tar xhf Parse-Yapp-1.21.tar.gz",
+                "tar xhf JSON-4.10.tar.gz",
+                "cd Parse-Yapp-1.21 && perl Makefile.PL PREFIX=/app && make && make install",
+                "cd JSON-4.10 && perl Makefile.PL PREFIX=/app && make && make install",
+                "ln -s /app/lib/perl5/site_perl/5.36.0/$(basename `ls -d /usr/lib/perl5/5.36.0/*-linux`) /app/lib/perl5/site_perl/5.36.0/arch"
+            ],
+            "post-install": [
+                "chmod -R u+w /app/lib/perl5/site_perl"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz",
+                    "sha256": "3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 3197,
+                        "stable-only": true,
+                        "url-template": "https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-$version.tar.gz"
+                    }
+                },
+                {
+                    "type": "file",
+                    "url": "https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/JSON-4.10.tar.gz",
+                    "sha256": "df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 12847,
+                        "stable-only": true,
+                        "url-template": "https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/JSON-$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "rpcsvc-proto",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.2/rpcsvc-proto-1.4.2.tar.xz",
+                    "sha256": "678851b9f7ddf4410d2859c12016b65a6dd1a0728d478f18aeb54d165352f17c"
+                }
+            ]
+        },
+        {
+            "name": "samba",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--without-json",
+                "--without-ad-dc",
+                "--without-ldap",
+                "--without-ads",
+                "--without-pam"
+            ],
+            "build-options": {
+                "env": {
+                    "PERLLIB": "/app/lib/perl5/site_perl/5.36.0:/app/lib/perl5/site_perl/5.36.0/arch"
+                }
+            },
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.samba.org/pub/samba/stable/samba-4.18.2.tar.gz",
+                    "sha256": "5bf87e179616cd12a52d85fb8b26eec709f13709a2b67fe42b1fb0213f7e8106"
+                }
+            ]
+        },
+        {
             "name": "install",
             "builddir": true,
             "buildsystem": "simple",
