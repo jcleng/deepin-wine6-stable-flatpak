@@ -18,7 +18,7 @@
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
-        "--device=dri",
+        "--device=all",
         "--socket=wayland",
         "--socket=pulseaudio",
         "--allow=multiarch",
@@ -69,25 +69,6 @@
                     "type": "file",
                     "url": "https://community-packages.deepin.com/deepin/pool/main/o/openldap/libldap-2.4-2_2.4.47%2Bdfsg.4-1%2Beagle_i386.deb",
                     "sha256": "746848a01dfb988a9afd256e2a5e7b7309c3e65f964e4783ff37cffd98bfc68e"
-                }
-            ]
-        },
-        {
-            "name": "libsasl2",
-            "builddir": true,
-            "buildsystem": "simple",
-            "build-commands": [
-                "ar x libsasl2-2_2.1.27.1-1%2Bdde_i386.deb",
-                "tar xvf data.tar.xz",
-                "mkdir -p /app/lib/",
-                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
-                "ls /app/lib/"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://community-packages.deepin.com/deepin/pool/main/c/cyrus-sasl2/libsasl2-2_2.1.27.1-1%2Bdde_i386.deb",
-                    "sha256": "8f1b65db19239c072689a9775da2699cada23e99738c5b01d13e293cf899bdbd"
                 }
             ]
         },
@@ -160,6 +141,121 @@
                     "type": "archive",
                     "url": "https://download.samba.org/pub/samba/stable/samba-4.18.2.tar.gz",
                     "sha256": "5bf87e179616cd12a52d85fb8b26eec709f13709a2b67fe42b1fb0213f7e8106"
+                }
+            ]
+        },
+        {
+            "name": "libkrb5",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libkrb5-3_1.17.4-1%2Beagle_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/k/krb5/libkrb5-3_1.17.4-1%2Beagle_i386.deb",
+                    "sha256": "22eea2c5bc808a13ad597e3b604c305cb42a4ba9afb1893b2421e13b707df57a"
+                }
+            ]
+        },
+        {
+            "name": "libk5crypto3",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libk5crypto3_1.17.6-deepin1_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/k/krb5/libk5crypto3_1.17.6-deepin1_i386.deb",
+                    "sha256": "ba3cf82cc74a511afb4a903fa3c0b338d8dfb365d893102d76a434ccc4a51bd9"
+                }
+            ]
+        },
+        {
+            "name": "libkrb5support",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libkrb5support0_1.17.6-deepin1_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/k/krb5/libkrb5support0_1.17.6-deepin1_i386.deb",
+                    "sha256": "4b29970c32df139bd6fe361967e2311192610885d91cb13e17b293db06871472"
+                }
+            ]
+        },
+        {
+            "name": "libkeyutils",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libkeyutils1_1.6-6_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/k/keyutils/libkeyutils1_1.6-6_i386.deb",
+                    "sha256": "a6aee2dc20424ab6488b2f6c0a47ccc697713774472aef632f71e37966efcf44"
+                }
+            ]
+        },
+
+        {
+            "name": "libgssapi-krb5",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libgssapi-krb5-2_1.17.6-deepin1_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/k/krb5/libgssapi-krb5-2_1.17.6-deepin1_i386.deb",
+                    "sha256": "9fae5c0b4924a726ac406927edd67fe82a518940dff9d15acb93b78879cf0bd2"
+                }
+            ]
+        },
+        {
+            "name": "libsasl2",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libsasl2-2_2.1.27.1-1%2Bdde_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/c/cyrus-sasl2/libsasl2-2_2.1.27.1-1%2Bdde_i386.deb",
+                    "sha256": "8f1b65db19239c072689a9775da2699cada23e99738c5b01d13e293cf899bdbd"
                 }
             ]
         },

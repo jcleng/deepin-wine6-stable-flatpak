@@ -23,5 +23,11 @@ export WINEARCH=win32
 - 其他
 
 ```shell
-# 依赖包含samba,是兼容部分程序使用了 ntlm_auth
+# 依赖包含krb5,是兼容部分程序使用了 ntlm_auth; x86的话可以直接安装smb服务就支持了
+
+# 字体
+$WINEPREFIX/drive_c/windows/Fonts
+
+# 如果异常进入app,删除目录: 然后重新指定WINEPREFIX并安装window程序
+$XDG_DATA_HOME/deepinwine6
 ```
