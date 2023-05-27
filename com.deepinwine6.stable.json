@@ -260,6 +260,101 @@
             ]
         },
         {
+            "name": "libvkd3d",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libvkd3d1_1.1-3_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/v/vkd3d/libvkd3d1_1.1-3_i386.deb",
+                    "sha256": "48902d977867c1e88a8ee013d28306fd5eeb4b2d9b665a30e7b0b6a3f5b6fbe2"
+                }
+            ]
+        },
+        {
+            "name": "libgphoto2",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libgphoto2-6_2.5.22-3_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/libg/libgphoto2/libgphoto2-6_2.5.22-3_i386.deb",
+                    "sha256": "be8b472801de9e2c00222f2e6f41965786c8a8a28900e1082e539ce6569aa15e"
+                }
+            ]
+        },
+        {
+            "name": "libgphoto2_port",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libgphoto2-port12_2.5.22-3_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/libg/libgphoto2/libgphoto2-port12_2.5.22-3_i386.deb",
+                    "sha256": "9f5378bd863f367831e2ff72294dd838765802a4a96b9488b9eeab92d3da4919"
+                }
+            ]
+        },
+        {
+            "name": "libusb1",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libusb-1.0-0_1.0.22-2_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./lib/i386-linux-gnu/* /app/lib/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/libu/libusb-1.0/libusb-1.0-0_1.0.22-2_i386.deb",
+                    "sha256": "bfbecf04e8db22c2a21ef0fa3aa0022ecaee2f1c7f1781a7c713194e324558eb"
+                }
+            ]
+        },
+        {
+            "name": "libpcap",
+            "builddir": true,
+            "buildsystem": "simple",
+            "build-commands": [
+                "ar x libpcap0.8_1.8.1.1-6%2Bdde_i386.deb",
+                "tar xvf data.tar.xz",
+                "mkdir -p /app/lib/",
+                "cp -r ./usr/lib/i386-linux-gnu/* /app/lib/",
+                "ls /app/lib/|grep libpcap"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://community-packages.deepin.com/deepin/pool/main/libp/libpcap/libpcap0.8_1.8.1.1-6%2Bdde_i386.deb",
+                    "sha256": "b4ba21b6743487715a2648df44ee7f006a1eb241d489cd35d581a8ebb991aa45"
+                }
+            ]
+        },
+
+        {
             "name": "install",
             "builddir": true,
             "buildsystem": "simple",
