@@ -18,6 +18,9 @@ flatpak run --command=sh com.deepinwine6.stable
 export WINEPREFIX=$XDG_DATA_HOME/deepinwine6
 export WINEARCH=win32
 /app/deepin-wine6-stable/bin/winecfg
+
+# 安装/删除软件
+wine uninstaller
 ```
 
 - 其他
